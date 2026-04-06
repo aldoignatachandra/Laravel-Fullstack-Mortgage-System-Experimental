@@ -24,7 +24,7 @@ class HouseService
             $query->where('city_id', $filters['city']);
         }
 
-        if (! empty($filters['category_id'])) {
+        if (! empty($filters['category'])) {
             $query->where('category_id', $filters['category']);
         }
 

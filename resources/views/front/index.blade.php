@@ -1,53 +1,7 @@
-<!doctype html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/output.css') }}" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-</head>
-
-<body>
-    <nav class="relative w-full flex items-center justify-center px-[75px]">
-        <div
-            class="fixed top-0 flex items-center justify-between w-full max-w-[1130px] rounded-3xl p-4 bg-white mt-[30px] z-30">
-            <a href="{{ route('front.index') }}" class="flex shrink-0">
-                <img src="{{ asset('assets/images/logos/logo-black.svg') }}" alt="logo">
-            </a>
-            <ul class="flex items-center gap-[30px]">
-                <li class="group active">
-                    <a href="{{ route('front.index') }}"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Home</a>
-                </li>
-                <li class="group">
-                    <a href="#"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Browse</a>
-                </li>
-                <li class="group">
-                    <a href="#"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Rewards</a>
-                </li>
-                <li class="group">
-                    <a href="#"
-                        class="hover:font-bold group-[.active]:font-bold transition-all duration-300">Stories</a>
-                </li>
-            </ul>
-            <div class="flex items-center gap-3">
-                <a href="{{ route('login') }}"
-                    class="group rounded-full border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
-                    <span class="font-semibold group-hover:text-white transition-all duration-300">Sign In</span>
-                </a>
-                <a href="{{ route('register') }}"
-                    class="group rounded-full border py-[14px] px-5 flex items-center bg-tedja-green">
-                    <span class="font-semibold">Sign Up</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+@extends('layouts.master')
+@section('title', 'Tedja Homepage - Experimental Project')
+@section('content')
+    <x-nav-tedja />
     <header class="relative flex flex-col w-full h-[712px]">
         <div class="absolute w-full h-[650px] overflow-hidden">
             <img src="{{ asset('assets/images/backgrounds/hero-image.webp') }}" class="w-full h-full object-cover"
@@ -136,8 +90,8 @@
                             <div
                                 class="flex flex-col w-[240px] shrink-0 rounded-[30px] ring-1 ring-tedja-border bg-white p-[10px] gap-4 hover:ring-2 hover:ring-tedja-blue transition-all duration-300">
                                 <div class="flex w-full h-[240px] overflow-hidden rounded-[30px]">
-                                    <img src="{{ Storage::url($category->photo) }}"
-                                        class="w-full h-full object-cover" alt="thumbnails">
+                                    <img src="{{ Storage::url($category->photo) }}" class="w-full h-full object-cover"
+                                        alt="thumbnails">
                                 </div>
                                 <div class="flex flex-col gap-2 pb-[10px] pl-[10px]">
                                     <h3 class="font-bold text-lg">
@@ -1292,9 +1246,13 @@
             </div>
         </div>
     </section>
+@endsection
 
+@push('after-styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+@endpush
+
+@push('after-scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="{{ asset('js/home.js') }}"></script>
-</body>
-
-</html>
+@endpush

@@ -47,7 +47,7 @@ class House extends Model
         return $this->hasMany(HousePhoto::class);
     }
 
-    public function interest()
+    public function interests()
     {
         return $this->hasMany(Interest::class);
     }
