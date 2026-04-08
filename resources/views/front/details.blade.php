@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Search Houses - Experimental Project')
+@section('title', 'House Details - Experimental Project')
 @section('content')
 
     <x-nav-tedja />

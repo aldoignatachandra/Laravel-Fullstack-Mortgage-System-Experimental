@@ -106,7 +106,7 @@ class MortgageService
     {
         $mortgageRequest->load(['house', 'house.city', 'house.category', 'installments']);
         $monthlyPayemnt = $mortgageRequest->monthly_amount;
-        $insurance = 9000000;
+        $insurance = 900000;
         $totalTaxAmount = round($monthlyPayemnt * 0.11);
 
         return compact('mortgageRequest', 'totalTaxAmount', 'insurance');

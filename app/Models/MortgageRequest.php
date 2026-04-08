@@ -36,7 +36,11 @@ class MortgageRequest extends Model
         return $this->belongsTo(House::class, 'house_id');
     }
 
-    public function interest()
+    // Renamed from interest() to interestModel() to avoid conflict with
+    // the 'interest' column (integer) in mortgage_requests table.
+    // $mortgageRequest->interest returns the column value (int),
+    // $mortgageRequest->interestModel returns the Interest model (with bank relationship).
+    public function interestModel()
     {
         return $this->belongsTo(Interest::class, 'interest_id');
     }

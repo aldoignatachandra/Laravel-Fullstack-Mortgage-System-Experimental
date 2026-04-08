@@ -33,7 +33,7 @@ class DashboardController extends Controller
     {
         $details = $this->mortgageService->getMortgageDetails($mortgageRequest);
 
-        return view('customer.mortgages.details', compact('details'));
+        return view('customer.mortgages.details', $details);
     }
 
     public function installment_details(Installment $installment)
@@ -47,7 +47,7 @@ class DashboardController extends Controller
     {
         $paymentDetails = $this->mortgageService->getInstallmentPaymentDetails($mortgageRequest);
 
-        return view('customer.installments.pay_installment', 'paymentDetails');
+        return view('customer.installments.pay_installment', $paymentDetails);
     }
 
     public function payment_store_midtrans(Request $request)
