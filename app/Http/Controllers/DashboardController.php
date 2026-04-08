@@ -21,10 +21,11 @@ class DashboardController extends Controller
         $this->mortgageService = $mortgageService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $userId = Auth::id();
-        $mortgages = $this->mortgageService->getUserMortgages($userId);
+        $search = $request->input('search');
+        $mortgages = $this->mortgageService->getUserMortgages($userId, $search);
 
         return view('customer.mortgages.index', compact('mortgages'));
     }

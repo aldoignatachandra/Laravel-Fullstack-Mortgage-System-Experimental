@@ -95,11 +95,28 @@ class MortgageService
         return $interestId ? Interest::findorfail($interestId) : null;
     }
 
-    public function getUserMortgages($userId)
+    public function getUserMortgages($userId, $search = null)
     {
-        return MortgageRequest::with(['house', 'house.city', 'house.category'])
-            ->where('user_id', $userId)
-            ->get();
+        $query = MortgageRequest::with(['house', 'house.city', 'house.category'])
+            ->where('user_id', $userId);
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('status', 'like', "%{$search}%")
+                    ->orWhere('bank_name', 'like', "%{$search}%")
+                    ->orWhereHas('house', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    })
+                    ->orWhereHas('house.city', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    })
+                    ->orWhereHas('house.category', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        return $query->get();
     }
 
     public function getMortgageDetails(MortgageRequest $mortgageRequest)

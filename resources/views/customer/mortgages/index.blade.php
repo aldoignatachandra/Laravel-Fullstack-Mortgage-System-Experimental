@@ -6,7 +6,7 @@
         <aside class="h-screen min-w-[270px] overflow-y-auto bg-tedja-black text-white [&::-webkit-scrollbar]:hidden">
             <div class="flex h-full w-full flex-col gap-[40px] pt-[40px]">
                 <div class="pl-[30px]">
-                    <a href="{{ route('dashboard') }}" class="shrink-0">
+                    <a href="{{ route('front.index') }}" class="shrink-0">
                         <img src="{{ asset('assets/images/logos/logo-white.svg') }}" alt="icon" />
                     </a>
                 </div>
@@ -96,11 +96,11 @@
         </aside>
         <div class="h-screen w-full overflow-y-auto pt-[30px] px-[30px]">
             <section id="NavTop" class="flex w-full items-center justify-between bg-white p-4 rounded-3xl">
-                <form class="relative">
+                <form class="relative" action="{{ route('dashboard') }}" method="GET">
                     <button type="submit" class="absolute right-5 top-1/2 shrink-0 translate-y-[-50%]">
                         <img src="{{ asset('assets/images/icons/search.svg') }}" alt="icon" />
                     </button>
-                    <input type="text"
+                    <input type="text" name="search" value="{{ request('search') }}"
                         class="w-[440px] placeholder:font-normal placeholder:text-base placeholder:leading-[24px] placeholder:text-tedja-secondary rounded-full border border-tedja-black py-[14px] pl-5  focus:outline-none pr-[64px] outline-none focus:ring-[2px] focus:ring-tedja-blue focus:border-transparent transition-all duration-300"
                         placeholder="Search your mortgage" />
                 </form>
@@ -256,15 +256,20 @@
                                 </div>
                             </div>
                             <div class="buttons flex flex-col gap-[12px] shrink-0">
+                                @if ($mortgage->status == 'Waiting for Bank')
+                                    <span
+                                        class="text-center bg-tedja-orange rounded-full py-[12px] w-[140px] font-semibold">Waiting</span>
+                                @elseif ($mortgage->status == 'approved')
+                                    <span
+                                        class="text-center bg-tedja-blue text-white rounded-full py-[12px] w-[140px] font-semibold">Approved</span>
+                                @elseif ($mortgage->status == 'rejected')
+                                    <span
+                                        class="text-center bg-tedja-red text-white rounded-full py-[12px] w-[140px] font-semibold">Rejected</span>
+                                @endif
                                 <a href="{{ route('dashboard.mortgage.details', $mortgage) }}">
                                     <div
-                                        class="font-semibold hover:text-[#FAFAFA] rounded-full py-[12px] w-[140px] border text-center border-tedja-black text-tedja-black bg-tedja-black transition-all duration-300 text-white">
-                                        Manage</div>
-                                </a>
-                                <a href="#">
-                                    <div
                                         class="font-semibold hover:text-[#FAFAFA] rounded-full py-[12px] w-[140px] bg-white border text-center border-tedja-black text-tedja-black hover:bg-tedja-black transition-all duration-300">
-                                        Details</div>
+                                        Manage</div>
                                 </a>
                                 <a href="#">
                                     <div
