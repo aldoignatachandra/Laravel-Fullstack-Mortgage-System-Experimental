@@ -72,7 +72,10 @@
                 </div>
             </a>
         @empty
-            belum ada data rumah sesuai kriteria
+            <div class="flex flex-col items-center justify-center py-20">
+                <p class="text-center text-tedja-secondary font-semibold text-lg">No houses found matching your criteria</p>
+                <p class="text-center text-tedja-secondary text-sm mt-2">Try adjusting your search filters</p>
+            </div>
         @endforelse
 
     </main>

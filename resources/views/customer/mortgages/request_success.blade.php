@@ -59,8 +59,8 @@
             <div class="flex flex-col gap-4">
                 <h1 class="font-bold text-2xl leading-9 text-center">It’s Done, Yay, Good Job! <br>Now is Waiting for Bank
                     Approval</h1>
-                <p>Kami akan membantu anda mengajukan kepada bank terkait sehingga hasil yang diharapkan sesuai dengan
-                    ekspetasi</p>
+                <p>We will help you submit your application to the relevant bank to ensure the results meet your
+                    expectations</p>
             </div>
             <div class="flex items-center justify-center gap-3">
                 <a href="{{ route('dashboard') }}"

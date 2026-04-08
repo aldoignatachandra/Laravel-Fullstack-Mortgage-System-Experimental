@@ -469,10 +469,9 @@
                                         <div class="flex flex-col gap-5 w-[460px] mx-auto">
                                             <div class="flex flex-col gap-[12px]">
                                                 <h4 class="font-bold text-xl leading-[30px] text-center">Not Available</h4>
-                                                <p class="leading-7 text-center">Status mortgage anda masih dalam proses
-                                                    sehingga anda belum dapat melakukan pembayaran installments pada cicilan
-                                                    KPR
-                                                    rumah tersebut, mohon bersabar.</p>
+                                                <p class="leading-7 text-center">Your mortgage status is still in process.
+                                                    You cannot make installment payments for this mortgage yet. Please be
+                                                    patient.</p>
                                             </div>
                                             <a href="">
                                                 <div
@@ -531,7 +530,10 @@
                                                     </a>
                                                 </div>
                                             @empty
-                                                <p>belum ada pembayaran cicilan</p>
+                                                <div class="flex flex-col items-center justify-center py-10">
+                                                    <p class="text-center text-tedja-secondary font-semibold">No installment payments yet</p>
+                                                    <p class="text-center text-tedja-secondary text-sm mt-2">Payments will appear here once made</p>
+                                                </div>
                                             @endforelse
 
                                         </div>
@@ -544,9 +546,9 @@
                                     <div class="flex flex-col gap-5 w-[460px] mx-auto">
                                         <div class="flex flex-col gap-[12px]">
                                             <h4 class="font-bold text-xl leading-[30px] text-center">Coming Soon</h4>
-                                            <p class="leading-7 text-center">Fitur panduan KPR dan tips properti sedang
-                                                dalam pengembangan. Nantikan informasi terbaru dari Tedja untuk membantu
-                                                keputusan properti Anda.</p>
+                                            <p class="leading-7 text-center">Mortgage guidance and property tips feature is
+                                                under development. Stay tuned for the latest information from Tedja to help
+                                                with your property decisions.</p>
                                         </div>
                                         <a href="">
                                             <div
@@ -561,9 +563,8 @@
                                     <div class="flex flex-col gap-5 w-[460px] mx-auto">
                                         <div class="flex flex-col gap-[12px]">
                                             <h4 class="font-bold text-xl leading-[30px] text-center">Coming Soon</h4>
-                                            <p class="leading-7 text-center">Fitur agen properti sedang dalam
-                                                pengembangan. Anda akan segera dapat terhubung dengan agen terpercaya
-                                                melalui Tedja.</p>
+                                            <p class="leading-7 text-center">Property agent feature is under development.
+                                                You will soon be able to connect with trusted agents through Tedja.</p>
                                         </div>
                                         <a href="">
                                             <div

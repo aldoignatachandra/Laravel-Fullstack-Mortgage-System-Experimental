@@ -11,11 +11,10 @@
         <div class="relative flex flex-col mt-[244px] gap-5 items-center">
             <p class="flex items-center gap-[6px] rounded-full py-[6px] px-3 bg-white border border-tedja-border">
                 <img src="{{ asset('assets/images/icons/crown.svg') }}" class="flex shrink-0 size-5" alt="icon">
-                <span class="font-semibold text-sm">Top Well-Designed House by Anggga Ark</span>
+                <span class="font-semibold text-sm">Top Well-Designed House by Tedja Team</span>
             </p>
             <h1 class="font-extrabold text-[46px] leading-[60px] text-center text-white">You Deserve Big House</h1>
-            <p class="text-lg leading-8 text-center text-white">Dibangun oleh para professional sehingga
-                memberikan<br>kecantikan sejati dan juga kehangatan bersama keluarga.</p>
+            <p class="text-lg leading-8 text-center text-white">Built by professionals to bring you<br>true beauty and warmth with your family.</p>
         </div>
         <form action="{{ route('front.search') }}"
             class="relative flex w-full max-w-[940px] rounded-3xl p-5 gap-5 bg-white border border-tedja-border shadow-[0px_8px_30px_0px_#06092208] mx-auto mt-auto">
@@ -73,7 +72,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex flex-col gap-1">
                     <h2 class="font-bold text-[26px] leading-10">Popular Categories</h2>
-                    <p>Temukan rumah sesuai kebutuhanmu</p>
+                    <p>Find the perfect home for your needs</p>
                 </div>
                 <a href="#"
                     class="group rounded-full border border-tedja-black py-[14px] px-5 hover:bg-tedja-black flex items-center transition-all duration-300">
@@ -115,7 +114,7 @@
     <section id="Testimonials" class="flex flex-col w-full max-w-[1280px] px-[135px] gap-[31px] mx-auto my-[70px]">
         <div class="flex flex-col gap-1 text-center">
             <h2 class="font-bold text-[26px] leading-10">Happy Families</h2>
-            <p>Kami hadir membuatmu bahagia</p>
+            <p>We're here to make you happy</p>
         </div>
         <div id="Slider-Container" class="relative flex gap-[30px] w-[1010px] h-[650px] shrink-0 overflow-hidden">
             <div
@@ -141,8 +140,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -168,8 +166,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -195,8 +192,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -222,8 +218,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -249,8 +244,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"
@@ -280,8 +274,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -307,8 +300,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -334,8 +326,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -361,8 +352,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -388,8 +378,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"
@@ -421,8 +410,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -448,8 +436,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -475,8 +462,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -502,8 +488,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -529,8 +514,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"
@@ -560,8 +544,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -587,8 +570,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -614,8 +596,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -641,8 +622,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -668,8 +648,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"
@@ -701,8 +680,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -728,8 +706,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -755,8 +732,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -782,8 +758,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -809,8 +784,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"
@@ -840,8 +814,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -867,8 +840,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -894,8 +866,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -921,8 +892,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -948,8 +918,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"
@@ -981,8 +950,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -1008,8 +976,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -1035,8 +1002,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -1062,8 +1028,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -1089,8 +1054,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"
@@ -1120,8 +1084,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile.png') }}"
@@ -1147,8 +1110,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-2.png') }}"
@@ -1174,8 +1136,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Awalnya takut dibawa kabur duitnya lalu dolor
-                                dicoba kok malah amet lorem dolor si happines puas pokoknya mas</p>
+                            <p class="font-semibold leading-[28px]">At first I was worried about my money, but after trying it, I was amazed. The results exceeded my expectations. Highly satisfied!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-3.png') }}"
@@ -1201,8 +1162,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-4.png') }}"
@@ -1228,8 +1188,7 @@
                                 <img src="{{ asset('assets/images/icons/Star 1.svg') }}" class="flex shrink-0"
                                     alt="star">
                             </div>
-                            <p class="font-semibold leading-[28px]">Beneran membantu banget tanpa basa basi KPR
-                                langsung beres</p>
+                            <p class="font-semibold leading-[28px]">Really helped a lot without any hassle. Mortgage process completed smoothly!</p>
                             <div class="flex items-center gap-[14px]">
                                 <div class="flex size-[60px] rounded-full overflow-hidden">
                                     <img src="{{ asset('assets/images/photos/profile-5.png') }}"

@@ -279,7 +279,10 @@
                             </div>
                         </div>
                     @empty
-                        <p>belum ada data mortgage</p>
+                        <div class="flex flex-col items-center justify-center py-16 px-8">
+                            <p class="text-center text-tedja-secondary font-semibold text-lg mb-2">No mortgage data available</p>
+                            <p class="text-center text-tedja-secondary text-sm">Apply for a mortgage to see it here</p>
+                        </div>
                     @endforelse
 
                 </section>
