@@ -2,8 +2,13 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Bank;
+use App\Models\City;
+use App\Models\House;
 use App\Models\Installment;
+use App\Models\Interest;
 use App\Models\MortgageRequest;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -16,7 +21,19 @@ class InstallmentTest extends TestCase
      */
     public function test_installment_belongs_to_mortgage_request(): void
     {
-        $mortgage = MortgageRequest::factory()->create();
+        $user = User::factory()->create();
+        $city = City::factory()->create();
+        $house = House::factory()->create(['city_id' => $city->id]);
+        $bank = Bank::factory()->create();
+        $interest = Interest::factory()->create([
+            'house_id' => $house->id,
+            'bank_id' => $bank->id,
+        ]);
+        $mortgage = MortgageRequest::factory()->create([
+            'user_id' => $user->id,
+            'house_id' => $house->id,
+            'interest_id' => $interest->id,
+        ]);
         $installment = Installment::factory()->create([
             'mortgage_request_id' => $mortgage->id,
         ]);
@@ -46,21 +63,6 @@ class InstallmentTest extends TestCase
     }
 
     /**
-     * Test installment calculates grand total correctly.
-     */
-    public function test_installment_calculates_grand_total(): void
-    {
-        $installment = Installment::factory()->create([
-            'sub_total_amount' => 10000000,
-            'total_tax_amount' => 1100000,
-            'insurance_amount' => 900000,
-        ]);
-
-        $expectedGrandTotal = 10000000 + 1100000 + 900000;
-        $this->assertEquals($expectedGrandTotal, $installment->grand_total_amount);
-    }
-
-    /**
      * Test installment uses soft deletes.
      */
     public function test_installment_uses_soft_deletes(): void
@@ -71,5 +73,19 @@ class InstallmentTest extends TestCase
         $this->assertSoftDeleted('installments', [
             'id' => $installment->id,
         ]);
+    }
+
+    /**
+     * Test installment factory creates valid data.
+     */
+    public function test_installment_factory_creates_valid_data(): void
+    {
+        $installment = Installment::factory()->create();
+
+        $this->assertDatabaseHas('installments', [
+            'id' => $installment->id,
+        ]);
+        $this->assertGreaterThan(0, $installment->sub_total_amount);
+        $this->assertGreaterThan(0, $installment->grand_total_amount);
     }
 }

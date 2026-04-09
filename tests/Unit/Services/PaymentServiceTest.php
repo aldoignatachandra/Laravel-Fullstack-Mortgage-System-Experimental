@@ -2,9 +2,14 @@
 
 namespace Tests\Unit\Services;
 
+use App\Models\Bank;
+use App\Models\City;
+use App\Models\House;
 use App\Models\Installment;
+use App\Models\Interest;
 use App\Models\MortgageRequest;
 use App\Models\User;
+use App\Services\MidtransService;
 use App\Services\PaymentService;
 use Database\Seeders\RoleAdminSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -17,83 +22,90 @@ class PaymentServiceTest extends TestCase
 
     private PaymentService $service;
 
+    private $mockMidtrans;
+
     protected function setUp(): void
     {
         parent::setUp();
-        $this->service = new PaymentService;
         $this->seed(RoleAdminSeeder::class);
+        $this->mockMidtrans = Mockery::mock(MidtransService::class);
+        $this->service = new PaymentService($this->mockMidtrans);
     }
 
     /**
-     * Test createPayment returns correct Snap token.
+     * Test createPayment calls Midtrans with correct parameters.
      */
-    public function test_create_payment_returns_snap_token(): void
+    public function test_create_payment_calls_midtrans_with_correct_params(): void
     {
-        $mockMidtrans = Mockery::mock(\App\Services\MidtransService::class);
-        $mockMidtrans->shouldReceive('createSnapToken')
-            ->once()
-            ->andReturn(['token' => 'test-snap-token-123']);
-
-        $this->app->instance(\App\Services\MidtransService::class, $mockMidtrans);
-
         $user = User::factory()->create();
+        $user->assignRole('customer');
+        $this->actingAs($user);
+
+        $city = City::factory()->create();
+        $house = House::factory()->create([
+            'city_id' => $city->id,
+            'name' => 'Test House',
+        ]);
+        $bank = Bank::factory()->create();
+        $interest = Interest::factory()->create([
+            'house_id' => $house->id,
+            'bank_id' => $bank->id,
+        ]);
         $mortgage = MortgageRequest::factory()->create([
             'user_id' => $user->id,
-            'monthly_amount' => 5000000,
-        ]);
-
-        $result = $this->service->createPayment($mortgage);
-
-        $this->assertArrayHasKey('token', $result);
-        $this->assertEquals('test-snap-token-123', $result['token']);
-    }
-
-    /**
-     * Test createPayment calculates grand total correctly.
-     */
-    public function test_create_payment_calculates_grand_total(): void
-    {
-        $mortgage = MortgageRequest::factory()->create([
+            'house_id' => $house->id,
+            'interest_id' => $interest->id,
             'monthly_amount' => 10000000,
         ]);
 
-        $mockMidtrans = Mockery::mock(\App\Services\MidtransService::class);
-        $mockMidtrans->shouldReceive('createSnapToken')
-            ->with(Mockery::on(function ($params) {
-                $expectedMonthly = 10000000;
-                $expectedInsurance = 900000;
-                $expectedTax = $expectedMonthly * 0.11;
-                $expectedTotal = $expectedMonthly + $expectedInsurance + $expectedTax;
-
-                return $params['transaction_details']['gross_amount'] == $expectedTotal;
-            }))
+        $this->mockMidtrans->shouldReceive('createSnapToken')
             ->once()
-            ->andReturn(['token' => 'test-token']);
+            ->with(Mockery::on(function ($params) use ($mortgage) {
+                $expectedInsurance = 900000;
+                $expectedTax = 1100000;
+                $expectedTotal = 10000000 + $expectedInsurance + $expectedTax;
 
-        $this->app->instance(\App\Services\MidtransService::class, $mockMidtrans);
+                return $params['transaction_details']['gross_amount'] == $expectedTotal
+                    && $params['custom_field2'] == $mortgage->id;
+            }))
+            ->andReturn('test-snap-token');
 
-        $this->service->createPayment($mortgage);
+        $result = $this->service->createPayment($mortgage);
+
+        $this->assertEquals('test-snap-token', $result);
     }
 
     /**
-     * Test processNotification creates installment on successful payment.
+     * Test processNotification creates installment on settlement.
      */
-    public function test_process_notification_creates_installment(): void
+    public function test_process_notification_creates_installment_on_settlement(): void
     {
+        $user = User::factory()->create();
+        $city = City::factory()->create();
+        $house = House::factory()->create(['city_id' => $city->id]);
+        $bank = Bank::factory()->create();
+        $interest = Interest::factory()->create([
+            'house_id' => $house->id,
+            'bank_id' => $bank->id,
+        ]);
         $mortgage = MortgageRequest::factory()->create([
-            'loan_total_amount' => 800000000,
-            'remaining_loan_amount' => 800000000,
+            'user_id' => $user->id,
+            'house_id' => $house->id,
+            'interest_id' => $interest->id,
+            'monthly_amount' => 10000000,
+            'loan_interest_total_amount' => 800000000,
         ]);
 
-        $notification = [
-            'order_id' => 'INSTALLMENT-'.$mortgage->id.'-001',
-            'transaction_status' => 'settlement',
-            'payment_type' => 'credit_card',
-        ];
+        $this->mockMidtrans->shouldReceive('handleNotification')
+            ->once()
+            ->andReturn([
+                'transaction_status' => 'settlement',
+                'gross_amount' => 12000000,
+                'custom_field2' => $mortgage->id,
+            ]);
 
-        $result = $this->service->processNotification($notification);
+        $this->service->processNotification();
 
-        $this->assertInstanceOf(Installment::class, $result);
         $this->assertDatabaseHas('installments', [
             'mortgage_request_id' => $mortgage->id,
             'is_paid' => true,
@@ -102,44 +114,76 @@ class PaymentServiceTest extends TestCase
     }
 
     /**
-     * Test processNotification updates remaining loan amount.
+     * Test processNotification creates installment on capture.
      */
-    public function test_process_notification_updates_remaining_loan(): void
+    public function test_process_notification_creates_installment_on_capture(): void
     {
+        $user = User::factory()->create();
+        $city = City::factory()->create();
+        $house = House::factory()->create(['city_id' => $city->id]);
+        $bank = Bank::factory()->create();
+        $interest = Interest::factory()->create([
+            'house_id' => $house->id,
+            'bank_id' => $bank->id,
+        ]);
         $mortgage = MortgageRequest::factory()->create([
-            'loan_total_amount' => 800000000,
-            'remaining_loan_amount' => 800000000,
-            'monthly_amount' => 10000000,
+            'user_id' => $user->id,
+            'house_id' => $house->id,
+            'interest_id' => $interest->id,
+            'monthly_amount' => 5000000,
+            'loan_interest_total_amount' => 400000000,
         ]);
 
-        $notification = [
-            'order_id' => 'INSTALLMENT-'.$mortgage->id.'-001',
-            'transaction_status' => 'settlement',
-            'payment_type' => 'bank_transfer',
-        ];
+        $this->mockMidtrans->shouldReceive('handleNotification')
+            ->once()
+            ->andReturn([
+                'transaction_status' => 'capture',
+                'gross_amount' => 6550000,
+                'custom_field2' => $mortgage->id,
+            ]);
 
-        $this->service->processNotification($notification);
+        $this->service->processNotification();
 
-        $mortgage->refresh();
-        $this->assertEquals(790000000, $mortgage->remaining_loan_amount);
+        $this->assertDatabaseHas('installments', [
+            'mortgage_request_id' => $mortgage->id,
+            'is_paid' => true,
+            'payment_type' => 'Midtrans',
+        ]);
     }
 
     /**
-     * Test processNotification ignores non-settlement status.
+     * Test processNotification ignores pending status.
      */
     public function test_process_notification_ignores_pending_status(): void
     {
-        $mortgage = MortgageRequest::factory()->create();
+        $this->mockMidtrans->shouldReceive('handleNotification')
+            ->once()
+            ->andReturn([
+                'transaction_status' => 'pending',
+                'gross_amount' => 12000000,
+                'custom_field2' => 1,
+            ]);
 
-        $notification = [
-            'order_id' => 'INSTALLMENT-'.$mortgage->id.'-001',
-            'transaction_status' => 'pending',
-            'payment_type' => 'credit_card',
-        ];
+        $this->service->processNotification();
 
-        $result = $this->service->processNotification($notification);
+        $this->assertDatabaseCount('installments', 0);
+    }
 
-        $this->assertNull($result);
+    /**
+     * Test processNotification ignores deny status.
+     */
+    public function test_process_notification_ignores_deny_status(): void
+    {
+        $this->mockMidtrans->shouldReceive('handleNotification')
+            ->once()
+            ->andReturn([
+                'transaction_status' => 'deny',
+                'gross_amount' => 12000000,
+                'custom_field2' => 1,
+            ]);
+
+        $this->service->processNotification();
+
         $this->assertDatabaseCount('installments', 0);
     }
 

@@ -40,8 +40,7 @@ class MortgageRequestFactory extends Factory
             'house_price' => $housePrice,
             'monthly_amount' => fake()->numberBetween(1000000, 10000000),
             'status' => fake()->randomElement(['Waiting for Bank', 'Approved', 'Rejected']),
-            'documents' => null,
-            'remaining_loan_amount' => $loanTotal,
+            'documents' => 'documents/test-document.pdf',
         ];
     }
 

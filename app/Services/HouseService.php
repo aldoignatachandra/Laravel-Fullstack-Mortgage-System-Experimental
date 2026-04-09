@@ -29,8 +29,8 @@ class HouseService
         }
 
         $houses = $query->get();
-        $category = Category::findorfail($filters['category'] ?? null);
-        $city = City::findorfail($filters['city'] ?? null);
+        $category = ! empty($filters['category']) ? Category::find($filters['category']) : null;
+        $city = ! empty($filters['city']) ? City::find($filters['city']) : null;
 
         return compact('houses', 'category', 'city');
     }

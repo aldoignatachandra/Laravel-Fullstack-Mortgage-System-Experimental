@@ -2,8 +2,11 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Bank;
+use App\Models\City;
 use App\Models\House;
 use App\Models\Installment;
+use App\Models\Interest;
 use App\Models\MortgageRequest;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,10 +22,21 @@ class MortgageRequestTest extends TestCase
     public function test_mortgage_request_belongs_to_user(): void
     {
         $user = User::factory()->create();
-        $mortgage = MortgageRequest::factory()->create(['user_id' => $user->id]);
+        $city = City::factory()->create();
+        $house = House::factory()->create(['city_id' => $city->id]);
+        $bank = Bank::factory()->create();
+        $interest = Interest::factory()->create([
+            'house_id' => $house->id,
+            'bank_id' => $bank->id,
+        ]);
+        $mortgage = MortgageRequest::factory()->create([
+            'user_id' => $user->id,
+            'house_id' => $house->id,
+            'interest_id' => $interest->id,
+        ]);
 
-        $this->assertInstanceOf(User::class, $mortgage->user);
-        $this->assertEquals($user->id, $mortgage->user->id);
+        $this->assertInstanceOf(User::class, $mortgage->customer);
+        $this->assertEquals($user->id, $mortgage->customer->id);
     }
 
     /**
@@ -30,8 +44,19 @@ class MortgageRequestTest extends TestCase
      */
     public function test_mortgage_request_belongs_to_house(): void
     {
-        $house = House::factory()->create();
-        $mortgage = MortgageRequest::factory()->create(['house_id' => $house->id]);
+        $user = User::factory()->create();
+        $city = City::factory()->create();
+        $house = House::factory()->create(['city_id' => $city->id]);
+        $bank = Bank::factory()->create();
+        $interest = Interest::factory()->create([
+            'house_id' => $house->id,
+            'bank_id' => $bank->id,
+        ]);
+        $mortgage = MortgageRequest::factory()->create([
+            'user_id' => $user->id,
+            'house_id' => $house->id,
+            'interest_id' => $interest->id,
+        ]);
 
         $this->assertInstanceOf(House::class, $mortgage->house);
         $this->assertEquals($house->id, $mortgage->house->id);
@@ -42,26 +67,25 @@ class MortgageRequestTest extends TestCase
      */
     public function test_mortgage_request_has_many_installments(): void
     {
-        $mortgage = MortgageRequest::factory()->create();
+        $user = User::factory()->create();
+        $city = City::factory()->create();
+        $house = House::factory()->create(['city_id' => $city->id]);
+        $bank = Bank::factory()->create();
+        $interest = Interest::factory()->create([
+            'house_id' => $house->id,
+            'bank_id' => $bank->id,
+        ]);
+        $mortgage = MortgageRequest::factory()->create([
+            'user_id' => $user->id,
+            'house_id' => $house->id,
+            'interest_id' => $interest->id,
+        ]);
         Installment::factory()->count(3)->create([
             'mortgage_request_id' => $mortgage->id,
         ]);
 
         $this->assertCount(3, $mortgage->installments);
         $this->assertInstanceOf(Installment::class, $mortgage->installments->first());
-    }
-
-    /**
-     * Test remaining loan amount accessor.
-     */
-    public function test_remaining_loan_amount_accessor(): void
-    {
-        $mortgage = MortgageRequest::factory()->create([
-            'loan_total_amount' => 800000000,
-            'remaining_loan_amount' => 500000000,
-        ]);
-
-        $this->assertEquals(500000000, $mortgage->remaining_loan_amount);
     }
 
     /**
@@ -87,5 +111,17 @@ class MortgageRequestTest extends TestCase
         $this->assertSoftDeleted('mortgage_requests', [
             'id' => $mortgage->id,
         ]);
+    }
+
+    /**
+     * Test remaining loan amount accessor with no installments.
+     */
+    public function test_remaining_loan_amount_with_no_installments(): void
+    {
+        $mortgage = MortgageRequest::factory()->create([
+            'loan_interest_total_amount' => 800000000,
+        ]);
+
+        $this->assertEquals(800000000, $mortgage->remaining_loan_amount);
     }
 }
