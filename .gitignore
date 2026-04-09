@@ -44,6 +44,7 @@ yarn-error.log
 # Testing & Cache
 /.phpunit.cache
 .phpunit.result.cache
+/coverage-report
 
 # IDE Helpers
 _ide_helper.php
