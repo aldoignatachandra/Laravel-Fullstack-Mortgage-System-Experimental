@@ -65,6 +65,18 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
+        ],
+        "test:coverage": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test --coverage"
+        ],
+        "test:coverage-html": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test --coverage-html=coverage-report"
+        ],
+        "test:coverage-min": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test --coverage --min=80"
         ]
     },
     "extra": {
