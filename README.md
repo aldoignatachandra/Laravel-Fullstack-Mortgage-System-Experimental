@@ -17,15 +17,15 @@ Designed for the Indonesian property market (IDR currency, Jakarta timezone), Te
 
 ## 📸 Overview
 
-### Overview - Admin Login Page
+### Overview - User Login Page
 
 ![Admin Login](screenshots/admin-login.png)
 
-### Overview - Admin Dashboard
+### Overview - User Mortgage Page
 
 ![Admin Dashboard](screenshots/admin-dashboard.png)
 
-### Overview - Custom Front Page
+### Overview - Front Page Dashboard
 
 ![Error Page](screenshots/front-page.png)
 
