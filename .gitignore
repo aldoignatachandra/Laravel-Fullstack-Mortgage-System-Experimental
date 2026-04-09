@@ -26,6 +26,7 @@ yarn-error.log
 /.claude
 /.trae
 /.factory
+.mcp.json
 
 # Dependencies
 /node_modules
@@ -57,3 +58,15 @@ Homestead.yaml
 # Project-specific
 /memory
 skills-lock.json
+
+# AI Guidelines (Local-only)
+CLAUDE.md
+
+# OpenCode Configuration (Local-only)
+opencode.json
+tui.json
+.opencode/
+
+# OpenCode Cache & Logs
+.opencode-cache/
+.opencode-logs/

@@ -15,6 +15,22 @@ Designed for the Indonesian property market (IDR currency, Jakarta timezone), Te
 
 ---
 
+## 📸 Overview
+
+### Overview - Admin Login Page
+
+![Admin Login](screenshots/admin-login.png)
+
+### Overview - Admin Dashboard
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+### Overview - Custom Front Page
+
+![Error Page](screenshots/front-page.png)
+
+---
+
 ## 🙏 Credits
 
 This project was made possible thanks to the amazing course from **[BuildWithAngga](https://buildwithangga.com)** — an Indonesian coding tutorial platform that provides high-quality, practical programming courses. The tutorial provided the foundation and guidance for building this property & mortgage management system.
@@ -55,6 +71,8 @@ If you're looking to learn web development with real-world projects, check out t
 - **Responsive Frontend** - Tailwind CSS with custom design system
 - **Soft Deletes** - Data safety with soft delete on all models
 - **Laravel Breeze Authentication** - Login, register, password reset, email verification
+- **Custom Error Pages** - Beautiful 403, 404, 500 error pages matching brand design
+- **Custom Admin Login** - Styled Filament login page matching frontend design
 
 ---
 
@@ -475,18 +493,20 @@ tests/
 
 ## 🔧 Troubleshooting
 
-| Issue                          | Possible Cause                        | Solution                                                  |
-| ------------------------------ | ------------------------------------- | --------------------------------------------------------- |
-| **Database connection failed** | MySQL not running / wrong credentials | Start MySQL and check `.env` DB\_\* variables             |
-| **Class not found**            | Autoload not updated                  | Run `composer dump-autoload`                              |
-| **Storage images not loading** | Symlink not created                   | Run `php artisan storage:link`                            |
-| **419 Page Expired**           | CSRF token missing                    | Add `@csrf` to forms                                      |
-| **Filament panel 403**         | User doesn't have admin role          | Check user has `admin` role in database                   |
-| **Midtrans payment fails**     | Missing/wrong API keys                | Add correct keys to `.env`                                |
-| **Migration error**            | Schema mismatch                       | Run `php artisan migrate:fresh --seed` (⚠️ destroys data) |
-| **Permission denied**          | File permissions                      | Run `chmod -R 775 storage/`                               |
-| **CSS not loading**            | Vite not running                      | Run `npm run dev` in separate terminal                    |
-| **Blank page / 500 error**     | Check logs                            | Read `storage/logs/laravel.log`                           |
+| Issue                           | Possible Cause                        | Solution                                                                |
+| ------------------------------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| **Database connection failed**  | MySQL not running / wrong credentials | Start MySQL and check `.env` DB\_\* variables                           |
+| **Class not found**             | Autoload not updated                  | Run `composer dump-autoload`                                            |
+| **Storage images not loading**  | Symlink not created                   | Run `php artisan storage:link`                                          |
+| **419 Page Expired**            | CSRF token missing                    | Add `@csrf` to forms                                                    |
+| **Filament panel 403**          | User doesn't have admin role          | Check user has `admin` role in database                                 |
+| **Admin login not working**     | Corrupted password hash               | Reset password via Tinker: `$user->password = bcrypt('newpass')`        |
+| **Livewire root element error** | Multiple root elements in Blade       | Ensure only ONE root element per component (wrap styles/scripts inside) |
+| **Midtrans payment fails**      | Missing/wrong API keys                | Add correct keys to `.env`                                              |
+| **Migration error**             | Schema mismatch                       | Run `php artisan migrate:fresh --seed` (⚠️ destroys data)               |
+| **Permission denied**           | File permissions                      | Run `chmod -R 775 storage/`                                             |
+| **CSS not loading**             | Vite not running                      | Run `npm run dev` in separate terminal                                  |
+| **Blank page / 500 error**      | Check logs                            | Read `storage/logs/laravel.log`                                         |
 
 ### Debug Commands
 
@@ -510,6 +530,35 @@ php artisan migrate:status
 # Monitor logs in real-time
 php artisan pail
 ```
+
+---
+
+## 🚀 Future Development
+
+This project is actively being developed. The following features are planned for upcoming releases:
+
+### 🎯 Planned Features
+
+| Feature                     | Description                                                                                                                                                             | Priority |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| **Reward System**           | Point-based loyalty program for customers who make timely mortgage payments. Users can earn points redeemable for discounts, fee waivers, or property-related services. | High     |
+| **Wishlist System**         | Allow customers to save favorite properties to a wishlist, receive price drop notifications, and compare multiple properties side-by-side.                              | High     |
+| **Stories System**          | Property stories feature showcasing customer success stories, property highlights, market trends, and educational content about home ownership and mortgages.           | Medium   |
+| **Responsive Design**       | Full mobile responsiveness optimization for all customer-facing pages including mortgage forms, payment flows, and dashboard on tablets and smartphones.                | High     |
+| **Advanced Search Filters** | Enhanced property search with map-based filtering, price range sliders, and amenity checkboxes.                                                                         | Medium   |
+| **Unit Testing**            | Comprehensive unit tests for Services, Controllers, and Models using PHPUnit. Aim for 80%+ code coverage.                                                               | High     |
+| **Integration Testing**     | End-to-end feature tests for critical user flows: mortgage application, payment processing, and admin CRUD operations.                                                  | High     |
+
+### 📝 Notes for Contributors
+
+- **Reward System**: Consider implementing with Spatie's Laravel Activity Logger for tracking user actions
+- **Wishlist**: Simple pivot table between `users` and `houses` with soft deletes
+- **Stories**: Could use Filament's RichEditor for content management and store in a new `stories` table
+- **Responsive Design**: Use Tailwind's responsive prefixes (`md:`, `lg:`) and test on actual devices. Focus on touch-friendly inputs and readable text sizes
+- **Unit Testing**: Follow TDD approach - write failing tests first, then implement. Mock external services (Midtrans) for isolated tests
+- **Integration Testing**: Use Laravel's HTTP tests with database transactions. Test complete flows from controller through service to database
+
+Stay tuned for updates! Contributions and feature suggestions are welcome.
 
 ---
 

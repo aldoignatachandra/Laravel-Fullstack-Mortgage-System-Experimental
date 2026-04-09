@@ -22,5 +22,25 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        // Custom error handling for 403 Forbidden
+        $exceptions->respond(function ($response, $exception, $request) {
+            // Handle 403 Forbidden
+            if ($exception instanceof \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException ||
+                $exception instanceof \Illuminate\Auth\Access\AuthorizationException) {
+
+                // API requests should get JSON
+                if ($request->expectsJson() || $request->is('api/*')) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Access denied. You do not have permission to perform this action.',
+                        'code' => 403,
+                    ], 403);
+                }
+
+                // Web requests get the custom view
+                return response()->view('errors.403', [], 403);
+            }
+
+            return $response;
+        });
     })->create();
