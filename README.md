@@ -549,16 +549,18 @@ This project is actively being developed. The following features are planned for
 | **Unit Testing**            | Comprehensive unit tests for Services, Controllers, and Models using PHPUnit. Aim for 80%+ code coverage.                                                               | High     |
 | **Integration Testing**     | End-to-end feature tests for critical user flows: mortgage application, payment processing, and admin CRUD operations.                                                  | High     |
 
-### 📝 Notes for Contributors
+### 📝 Implementation Notes
 
-- **Reward System**: Consider implementing with Spatie's Laravel Activity Logger for tracking user actions
-- **Wishlist**: Simple pivot table between `users` and `houses` with soft deletes
-- **Stories**: Could use Filament's RichEditor for content management and store in a new `stories` table
-- **Responsive Design**: Use Tailwind's responsive prefixes (`md:`, `lg:`) and test on actual devices. Focus on touch-friendly inputs and readable text sizes
-- **Unit Testing**: Follow TDD approach - write failing tests first, then implement. Mock external services (Midtrans) for isolated tests
-- **Integration Testing**: Use Laravel's HTTP tests with database transactions. Test complete flows from controller through service to database
+Personal notes for future development on this experimental project:
 
-Stay tuned for updates! Contributions and feature suggestions are welcome.
+- **Reward System**: Could implement with Spatie's Laravel Activity Logger for tracking user actions and calculating points
+- **Wishlist**: Plan to create a simple pivot table between `users` and `houses` with soft deletes for saved properties
+- **Stories**: Thinking of using Filament's RichEditor for content management and storing in a new `stories` table
+- **Responsive Design**: Need to use Tailwind's responsive prefixes (`md:`, `lg:`) and test on actual devices. Focus on touch-friendly inputs and readable text sizes
+- **Unit Testing**: Currently at 35% coverage - aiming for 80%+. Following TDD approach with mocked external services (Midtrans)
+- **Integration Testing**: Planning to use Laravel's HTTP tests with database transactions for complete user flow testing
+
+This is a learning/experimental project - features and priorities may change as I explore Laravel and PHP best practices.
 
 ---
 
