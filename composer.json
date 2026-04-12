@@ -10,8 +10,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "darkaonline/l5-swagger": "^11.0",
         "filament/filament": "^3.3",
         "laravel/framework": "^12.0",
+        "laravel/sanctum": "^4.3",
         "laravel/tinker": "^2.10.1",
         "midtrans/midtrans-php": "^2.6",
         "spatie/laravel-permission": "^6.20"
@@ -58,7 +60,8 @@
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+            "@php -r \"echo PHP_EOL . '  Tedja' . PHP_EOL . PHP_EOL; echo '  API Docs:    http://localhost:8000/api/documentation' . PHP_EOL; echo '  OpenAPI JSON: http://localhost:8000/docs' . PHP_EOL . PHP_EOL;\"",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
         ],
         "format": "vendor/bin/pint",
         "format:check": "vendor/bin/pint --test",

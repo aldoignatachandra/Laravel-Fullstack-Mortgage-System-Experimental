@@ -5,7 +5,7 @@
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?logo=laravel&logoColor=white)
 ![Filament](https://img.shields.io/badge/Filament-3.3-FFA500)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1?logo=mysql&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-3.1+-06B6D4?logo=tailwindcss&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-3.x-06B6D4?logo=tailwindcss&logoColor=white)
 
 Full-featured **property listing & KPR mortgage platform** built with **Laravel 12 + Filament 3.3**. This application allows users to browse houses, request mortgages with bank interest rates, and manage installment payments via Midtrans payment gateway.
 
@@ -73,6 +73,7 @@ If you're looking to learn web development with real-world projects, check out t
 - **Laravel Breeze Authentication** - Login, register, password reset, email verification
 - **Custom Error Pages** - Beautiful 403, 404, 500 error pages matching brand design
 - **Custom Admin Login** - Styled Filament login page matching frontend design
+- **API Documentation** - Interactive Swagger/OpenAPI 3.1 documentation with L5-Swagger
 
 ---
 
@@ -374,6 +375,7 @@ npm run build
 | `php artisan storage:link`                    | Create storage symlink                                   |
 | `php artisan route:list`                      | List all routes                                          |
 | `php artisan pail`                            | Monitor application logs                                 |
+| `php artisan l5-swagger:generate`             | Generate API documentation                               |
 
 ---
 
@@ -406,6 +408,15 @@ npm run build
 | Route                                                   | Controller                                          | Description      |
 | ------------------------------------------------------- | --------------------------------------------------- | ---------------- |
 | `POST /mortgage/interest/payment/midtrans/notification` | `DashboardController@payment_midtrans_notification` | Midtrans webhook |
+
+### API Documentation
+
+| Route                        | Description                       |
+| ---------------------------- | --------------------------------- |
+| `GET /api/documentation`     | Swagger UI (interactive API docs) |
+| `GET /docs`                  | OpenAPI JSON specification        |
+| `GET /api/user`              | Get authenticated user profile    |
+| `POST /api/webhook/midtrans` | Midtrans payment webhook          |
 
 ---
 
@@ -539,15 +550,15 @@ This project is actively being developed. The following features are planned for
 
 ### 🎯 Planned Features
 
-| Feature                     | Description                                                                                                                                                             | Priority |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **Reward System**           | Point-based loyalty program for customers who make timely mortgage payments. Users can earn points redeemable for discounts, fee waivers, or property-related services. | High     |
-| **Wishlist System**         | Allow customers to save favorite properties to a wishlist, receive price drop notifications, and compare multiple properties side-by-side.                              | High     |
-| **Stories System**          | Property stories feature showcasing customer success stories, property highlights, market trends, and educational content about home ownership and mortgages.           | Medium   |
-| **Responsive Design**       | Full mobile responsiveness optimization for all customer-facing pages including mortgage forms, payment flows, and dashboard on tablets and smartphones.                | High     |
-| **Advanced Search Filters** | Enhanced property search with map-based filtering, price range sliders, and amenity checkboxes.                                                                         | Medium   |
-| **Unit Testing**            | Comprehensive unit tests for Services, Controllers, and Models using PHPUnit. Aim for 80%+ code coverage.                                                               | High     |
-| **Integration Testing**     | End-to-end feature tests for critical user flows: mortgage application, payment processing, and admin CRUD operations.                                                  | High     |
+| Feature                     | Description                                                                                                                                                             | Priority    |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| **Reward System**           | Point-based loyalty program for customers who make timely mortgage payments. Users can earn points redeemable for discounts, fee waivers, or property-related services. | High        |
+| **Wishlist System**         | Allow customers to save favorite properties to a wishlist, receive price drop notifications, and compare multiple properties side-by-side.                              | High        |
+| **Stories System**          | Property stories feature showcasing customer success stories, property highlights, market trends, and educational content about home ownership and mortgages.           | Medium      |
+| **Responsive Design**       | Full mobile responsiveness optimization for all customer-facing pages including mortgage forms, payment flows, and dashboard on tablets and smartphones.                | High        |
+| **Advanced Search Filters** | Enhanced property search with map-based filtering, price range sliders, and amenity checkboxes.                                                                         | Medium      |
+| **Unit Testing**            | Comprehensive unit tests for Services, Controllers, and Models using PHPUnit. Currently at 35% coverage — aiming for 80%+.                                              | In Progress |
+| **Integration Testing**     | End-to-end feature tests for critical user flows: mortgage application, payment processing, and admin CRUD operations.                                                  | High        |
 
 ### 📝 Implementation Notes
 
@@ -557,7 +568,7 @@ Personal notes for future development on this experimental project:
 - **Wishlist**: Plan to create a simple pivot table between `users` and `houses` with soft deletes for saved properties
 - **Stories**: Thinking of using Filament's RichEditor for content management and storing in a new `stories` table
 - **Responsive Design**: Need to use Tailwind's responsive prefixes (`md:`, `lg:`) and test on actual devices. Focus on touch-friendly inputs and readable text sizes
-- **Unit Testing**: Currently at 35% coverage - aiming for 80%+. Following TDD approach with mocked external services (Midtrans)
+- **Unit Testing**: Currently at ~35% coverage (Phases 1-2 completed). Following TDD approach with mocked external services (Midtrans). Phase 3 (edge cases, Filament resources) pending.
 - **Integration Testing**: Planning to use Laravel's HTTP tests with database transactions for complete user flow testing
 
 This is a learning/experimental project - features and priorities may change as I explore Laravel and PHP best practices.

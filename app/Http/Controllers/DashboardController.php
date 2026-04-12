@@ -8,6 +8,7 @@ use App\Services\MortgageService;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use OpenApi\Attributes as OA;
 
 class DashboardController extends Controller
 {
@@ -63,6 +64,48 @@ class DashboardController extends Controller
         }
     }
 
+    #[OA\Post(
+        path: '/api/webhook/midtrans',
+        operationId: 'handleMidtransWebhook',
+        summary: 'Handle Midtrans payment webhook callback',
+        description: 'Processes Midtrans callback payload and updates installment status accordingly.',
+        tags: ['Webhook'],
+        requestBody: new OA\RequestBody(
+            required: true,
+            content: new OA\JsonContent(
+                required: ['order_id', 'transaction_status'],
+                properties: [
+                    new OA\Property(property: 'order_id', type: 'string', example: 'INSTALLMENT-1-001'),
+                    new OA\Property(property: 'transaction_status', type: 'string', example: 'settlement'),
+                    new OA\Property(property: 'payment_type', type: 'string', nullable: true, example: 'bank_transfer'),
+                    new OA\Property(property: 'gross_amount', type: 'number', nullable: true, example: 12090000),
+                ],
+                type: 'object'
+            )
+        ),
+        responses: [
+            new OA\Response(
+                response: 200,
+                description: 'Callback processed successfully',
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: 'status', type: 'string', example: 'success'),
+                    ],
+                    type: 'object'
+                )
+            ),
+            new OA\Response(
+                response: 500,
+                description: 'Callback processing failed',
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: 'error', type: 'string', example: 'Failed to process notification: ...'),
+                    ],
+                    type: 'object'
+                )
+            ),
+        ]
+    )]
     public function payment_midtrans_notification(Request $request)
     {
         try {

@@ -346,6 +346,5 @@
 @endsection
 
 @push('after-scripts')
-    <script src="{{ asset('js/navbar-dropdown.js') }}"></script>
     <script src="{{ asset('js/my-mortgages-details.js') }}"></script>
 @endpush

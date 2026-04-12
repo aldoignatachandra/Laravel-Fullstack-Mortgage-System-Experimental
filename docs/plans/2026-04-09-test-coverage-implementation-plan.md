@@ -1,22 +1,24 @@
 # Tedja Test Coverage Implementation Plan
 
-> **Document Version:** 1.0  
+> **Document Version:** 1.1  
 > **Target:** Achieve 70-80% overall code coverage  
 > **Estimated Time:** 3-4 development sprints  
 > **Priority:** HIGH (blocks production deployment)
+> **Current Status:** Phases 1-2 COMPLETED ✅ | Phase 3 PENDING | Coverage: ~35%
 
 ---
 
 ## 📊 Current Coverage Analysis
 
 ```
-Overall Coverage: 22.8% (PRODUCTION RISK)
+Overall Coverage: ~35% (IN PROGRESS) ✅
 
-Critical Components:
-├── Services: 0-26.7% 🔴 (HIGHEST RISK)
-├── Models: 0-100% 🟡 (MIXED)
-├── Controllers: 0-100% 🟢 (AUTH OK)
-└── Filament Resources: 0-21% 🟡 (LOW PRIORITY)
+Completed Phases:
+├── Phase 1: Services ✅ (MortgageService, PaymentService, HouseService, MidtransService)
+├── Phase 2: Models & Controllers ✅ (MortgageRequest, House, Installment, User, Controllers)
+└── Phase 3: Edge Cases & Polish ⏳ (PENDING)
+
+Baseline: 22.8% → Current: ~35% → Target: 75%
 ```
 
 ---
@@ -936,5 +938,5 @@ composer format
 ---
 
 **Document Owner:** Development Team  
-**Last Updated:** 2026-04-09  
+**Last Updated:** 2026-04-12  
 **Next Review:** After Phase 1 completion
